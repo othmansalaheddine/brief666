@@ -31,6 +31,7 @@
     .delete-user, .accept-user {
         text-align: center;
     }
+    
 </style>
 <body class="bg-gray-100 p-8 bg-gray-100">
   
@@ -52,7 +53,6 @@
         </svg>
       </button>
 
-      <!-- Menu de Navigation -->
       <div class="hidden lg:flex lg:items-center lg:w-auto">
         <ion-icon name="journal-outline"></ion-icon>
         <a href="#" class="text-white hover:text-gray-300 px-4 py-2">0.00 USD</a>
@@ -64,13 +64,7 @@
     
   </nav>
 
-  <!-- Menu Déroulant pour les Petits Écrans -->
-  <div class="lg:hidden bg-blue-500 text-white p-4">
-    <a href="#" class="block py-2">Our Product</a>
-    <ion-icon name="basket-outline"></ion-icon>
-    <a href="#" class="block py-2">0.00 USD</a>
-    <a href="#" class="block py-2">Contact</a>
-  </div>
+
 
   <h1 style="text-align: center; font-size:40px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:blue;margin:10px 10px 10px 10px;">table des donnes</h1><hr>
 <!-- php dyal admin tableau -->
@@ -78,10 +72,8 @@
         <h3 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-black md:text-5xl lg:text-6xl">USERS</h3>
         <tr>
             <th>id</th>
-            
             <th>PassWord</th>
             <th>email</th>
-
             <th >delete user</th>
             <th>accepter user </th>
             <th>Role</th>
@@ -107,122 +99,165 @@ foreach ($quy as $row) {
 
     echo "</tr>";
 }
-// close tag php
+
 
 ?>
 
 <br><br>
     </table>
     <!-- add imag in database -->
-    <div class="container-5">
-    <form class="max-w-md mx-auto"  action="dashboard.php" method="post" enctype="multipart/form-data"><br><br>
-    <div class="flex flex-col justify-center container mx-auto px-4">
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outlin" type="text" name="titre" placeholder="titre"><br><br>
-
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outlin" type="text" name="description" placeholder="description"><br><br>
-
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outlin" type="text" name="prix" placeholder="prix"><br><br>
-
-      <input class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file" name="image" accept="image/*"><br><br>
-        <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" name="submit">Button</button>
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" action="dashboard.php" method="post" enctype="multipart/form-data">
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="titre">Titre</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="titre" type="text" name="titre" placeholder="Titre">
     </div>
-    </form>
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="description">Description</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="description" type="text" name="description" placeholder="Description">
     </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="prix">Prix</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="prix" type="text" name="prix" placeholder="Prix">
+    </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="q_max">Quantité maximale</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="q_max" type="number" name="q_max" placeholder="Quantité maximale">
+    </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="q_min">Quantité minimale</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="q_min" type="number" name="q_min" placeholder="Quantité minimale">
+    </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="id_c">id category</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="id_c" type="number" name="id_c" placeholder="id category">
+    </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="categoryFilter">ADD Category:</label>
+        <select id="categoryFilter" name="categoryFilter" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <option value="">All Categories</option>
+            <?php
+            require_once "./tmp/connection.php";
+            $categorySql = "SELECT * FROM categories";
+            $categoryQuery = mysqli_query($conn, $categorySql);
+
+            while ($category = mysqli_fetch_assoc($categoryQuery)) {
+                echo "<option value='" . $category['id_c'] . "'>" . $category['name_c'] . "</option>";
+            }
+            ?>
+        </select>
+    </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="image">Image</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="image" type="file" name="image" accept="image/*">
+    </div>
+    <div class="flex justify-center">
+        <button class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 rounded" name="submit" type="submit">Add Product</button>
+    </div>
+</form>
+
+
+
+
   <h2 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-black md:text-5xl lg:text-6xl">tabel product</h2>
     <!-- php -->
-   
-        <?php
+    
+    <?php
 require_once './tmp/connection.php';
-
-// Fetch existing products
-$sql = "SELECT * FROM product";
-$quy = mysqli_query($conn, $sql);
 
 echo "<table border='1' class='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
     <tr>
-    <th>ID</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Image</th>
-    <th>delete image</th>
-
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th>q_max</th>
+        <th>q_min</th>
+        <th>id category</th>
+        <th>Delete Image</th>
     </tr>";
-
+    $sql = "SELECT * FROM product";
+    $quy = mysqli_query($conn, $sql);
+    
 while ($row = mysqli_fetch_assoc($quy)) {
     echo "<tr>";
     echo "<td>" . $row['id'] . "</td>";
     echo "<td>" . $row['titre'] . "</td>";
     echo "<td>" . $row['description'] . "</td>";
     echo "<td>" . $row['prix'] . "</td>";
- 
-    echo "<td><img src='./uploads/" . $row['image'] . "' width='100' height='100'></td>";
-
-    echo "<td><a class='nline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' href='delete.php?id=" . $row['id'] . "'>delete product</a></td>";
+    echo "<td><img src='./uploads/" . $row['image'] . "' height='50' width='50'></td>";
+    echo "<td>" . $row['q_max'] . "</td>";
+    echo "<td>" . $row['q_min'] . "</td>";
+    echo "<td>" . $row['id_c'] . "</td>";
+    echo "<td><a href='delete.php?id=" . $row['id'] . "&type=product'>Delete</a></td>";
     echo "</tr>";
-    echo "<br>";
 }
-
 echo "</table>";
 
-// Add a new product
-if (isset($_POST['submit'])) {
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+    
     $titre = $_POST['titre'];
     $description = $_POST['description'];
     $prix = $_POST['prix'];
-
-    // Upload image to server
+    $q_min = $_POST['q_min'];
+    $q_max = $_POST['q_max'];
+    $id_c = $_POST['id_c'];
 
     $img_name = $_FILES['image']['name'];
     $img_size = $_FILES['image']['size'];
     $tmp_name = $_FILES['image']['tmp_name'];
     $error = $_FILES['image']['error'];
 
-
     $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
-			$img_ex_lc = strtolower($img_ex);
-      $allowed_exs = array("jpg", "jpeg", "png"); 
+    $img_ex_lc = strtolower($img_ex);
+    $allowed_exs = array("jpg", "jpeg", "png");
 
-      if (in_array($img_ex_lc, $allowed_exs)) {
-				$new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
-				$img_upload_path = './uploads/'.$new_img_name;
-				move_uploaded_file($tmp_name, $img_upload_path);
+    if (in_array($img_ex_lc, $allowed_exs)) {
+        $new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
+        $img_upload_path = './uploads/'.$new_img_name;
+        move_uploaded_file($tmp_name, $img_upload_path);
 
-				// Insert into Database
-          $sql = "INSERT INTO product (titre, description, prix, image) VALUES ('$titre', '$description', '$prix', '$new_img_name')";
-
-				mysqli_query($conn, $sql);
-				
-        exit();
-			}
+        // Insert into Database
+        $sql = "INSERT INTO product (titre, description, prix, image, q_min, q_max) 
+                VALUES ('$titre', '$description', '$prix', '$new_img_name', '$q_min', '$q_max')";
+        if (mysqli_query($conn, $sql)) {
+            echo "Product added successfully!";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    } else {
+        echo "Invalid file format. Please upload a valid image.";
+    }
 }
-// <!-- sorting product croissant by php  -->
 
+// Fetch existing products
 
+echo "<h2 class='mb-4 text-3xl font-extrabold text-gray-900 dark:text-black md:text-5xl lg:text-6xl'>Table Category</h2>";
 
+echo "<table border='1' class='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <!-- Add more columns if needed -->
+    </tr>";
+$categorySql = "SELECT * FROM categories";
+$categoryQuery = mysqli_query($conn, $categorySql);
 
+while ($category = mysqli_fetch_assoc($categoryQuery)) {
+    echo "<tr>";
+    echo "<td>" . $category['id_c'] . "</td>";
+    echo "<td>" . $category['name_c'] . "</td>";
+    // Add more columns if needed
+    echo "</tr>";
+}
+echo "</table>";
 
-
-
-
-
-
-
-
+// Close the connection after all queries
 mysqli_close($conn);
 ?>
-<br><br><br><br><br>
-<?php 
-require './tmp/connection.php';
-// sorting all product  in order croissant using php and mysqli
-$sql = "SELECT * FROM product ORDER BY prix ASC";
-$result = mysqli_query($conn, $sql);
 
 
-
-
-
-?>
 
 
 

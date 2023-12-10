@@ -18,25 +18,25 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `electronacerr2`
+CREATE DATABASE electronacerr2
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Table structure for table `categories
 --
 
-CREATE TABLE `categories` (
-  `id_c` int(11) NOT NULL,
-  `name_c` varchar(255) DEFAULT NULL
+CREATE TABLE categories (
+  id_c int(11) NOT NULL,
+  name_c varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id_c`, `name_c`) VALUES
+INSERT INTO categories (id_c, `name_c`) VALUES
 (1, 'laptop'),
 (2, 'phone'),
 (3, 'speaker');
