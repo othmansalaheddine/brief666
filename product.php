@@ -60,15 +60,12 @@ if ($result->num_rows > 0) {
           </button>
         </div>
         <div class="flex-shrink-0 flex items-center">
-          <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
-          <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg" alt="Workflow">
+          <img class="block lg:hidden h-8 w-auto" src="img/navv.png" alt="electronacer">
+          <img class="hidden lg:block h-8 w-auto" src="img/nav.png" alt="electronacer">
         </div>
         <div class="hidden md:ml-6 md:flex md:space-x-8">
           <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
-          <a href="#" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"> Dashboard </a>
-          <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"> Team </a>
-          <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"> Projects </a>
-          <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"> Calendar </a>
+          <a href="#" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"> prodauct  </a>
         </div>
       </div>
       <div class="flex items-center">
@@ -139,19 +136,10 @@ if ($result->num_rows > 0) {
 
   <!-- Menu Déroulant pour les Petits Écrans -->
 
-
+<div  style="padding: 10vh;"></div>
 
   <div class="container mx-auto dii">
-    <h1 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        font-size: 50px;
-        color: #2504ff;
-        font-weight: bold;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        margin-left: 10px;
-        margin-right: 10px;
-        text-align:center;
-        " id="titels" class="text-3xl font-semibold mb-8">Catalogue de Produits</h1>
+  
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 ">
     <div class="mb-5">
